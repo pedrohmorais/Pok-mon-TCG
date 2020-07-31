@@ -1,0 +1,6 @@
+<pkm-header></pkm-header>
+<div *ngIf="cards" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <div fxFlex="20%" *ngFor="let card of cards">
+    <img mat-card-image class="img" [src]="card.imageUrl">
+  </div>
+</div>
