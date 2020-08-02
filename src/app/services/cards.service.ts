@@ -39,4 +39,8 @@ export class CardsService {
       return response;
     });
   }
+
+  getById(cardId: string): Promise<PokemonTCG.Card> {
+    return PokemonTCG.Card.find(cardId);
+  }
 }

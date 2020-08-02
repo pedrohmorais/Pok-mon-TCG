@@ -1,0 +1,41 @@
+<pkm-header></pkm-header>
+<div class="loading" *ngIf="loading">
+  Loading...
+</div>
+<div class="card-details" *ngIf="card && !loading">
+  <img class="img" [src]="card.imageUrlHiRes">
+  <h1>
+    {{card.id}} - {{card.name}}
+  </h1>
+  <h2>Types</h2>
+  <mat-chip-list aria-label="Types" *ngIf="card.types">
+    <mat-chip *ngFor="let type of card.types" color="primary">{{type}}</mat-chip>
+  </mat-chip-list>
+  <div class="attacks" *ngIf="hasAttacks()">
+    <h2>Attacks</h2>
+    <mat-expansion-panel hideToggle *ngFor="let attack of card.attacks">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{attack.name}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list role="list">
+        <mat-list-item role="listitem">Damage: {{attack.damage}}</mat-list-item>
+        <mat-list-item role="listitem">Cost: {{attack.convertedEnergyCost}}</mat-list-item>
+        <mat-list-item role="listitem">Description: {{attack.text}}</mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </div>
+  <div class="resistances" *ngIf="hasResistances()">
+    <h2>Resistances</h2>
+    <mat-chip-list aria-label="resistances">
+      <mat-chip *ngFor="let resistances of card.resistances" color="primary">{{resistances.type}} {{resistances.value}}</mat-chip>
+    </mat-chip-list>
+  </div>
+  <div class="weaknesses" *ngIf="hasWeaknesses()">
+    <h2>Weaknesses</h2>
+    <mat-chip-list aria-label="Weaknesses">
+      <mat-chip *ngFor="let weaknesses of card.weaknesses" color="primary">{{weaknesses.type}} {{weaknesses.value}}</mat-chip>
+    </mat-chip-list>
+  </div>
+</div>

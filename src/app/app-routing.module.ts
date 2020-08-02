@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CardsModule } from './cards/cards.module';
+import { CardModule } from './card/card.module';
 
 const routes: Routes = [
   {
@@ -12,10 +13,10 @@ const routes: Routes = [
         path: 'cards',
         loadChildren: () => CardsModule,
       },
-      // {
-      //   path: 'cards/detail/:tourId',
-      //   loadChildren: './tours/detail/detail.module#DetailModule',
-      // },
+      {
+        path: 'card/:id',
+        loadChildren: () => CardModule,
+      },
     ],
   },
 ];
