@@ -10,6 +10,8 @@ const defaultOptions = {
 })
 export class CardsService {
 
+  private cards: PokemonTCG.Card[];
+
   constructor() { }
 
   compare( a, b, fieldName ): any {
@@ -28,7 +30,14 @@ export class CardsService {
     return 0;
   }
 
+  private setCards(cards): void {
+    this.cards = cards;
+  }
+
   getAll(options = defaultOptions): Promise<PokemonTCG.Card[]> {
+    if (this.cards) {
+      return new Promise(() => this.cards);
+    }
     return PokemonTCG.Card.all().then(p => {
       let response = p;
       if (options && options.sortBy) {
@@ -36,11 +45,23 @@ export class CardsService {
           (a, b) => this.compare(a, b, options.sortBy)
         );
       }
+      this.setCards(response);
       return response;
     });
   }
 
+  filterCardsByName(name: string): PokemonTCG.Card[] {
+    if (!this.cards) {
+      return [];
+    }
+
+    return this.cards.filter(card => card.name.toLowerCase().indexOf(name.toLowerCase()) !== -1);
+  }
+
   getById(cardId: string): Promise<PokemonTCG.Card> {
+    if (this.cards) {
+      return new Promise(() => this.cards.find(c => c.id === cardId));
+    }
     return PokemonTCG.Card.find(cardId);
   }
 }
