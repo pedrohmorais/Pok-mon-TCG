@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CardsService } from '../services/cards.service';
 import { PokemonTCG } from 'pokemon-tcg-sdk-typescript';
+import { BreadCrumb } from '../shared/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'pkm-card',
@@ -13,6 +14,7 @@ export class CardComponent implements OnInit {
   id: string;
   loading = true;
   card: PokemonTCG.Card;
+  breadCrumbs: BreadCrumb[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -40,11 +42,25 @@ export class CardComponent implements OnInit {
     return !!(weaknesses && weaknesses[0]);
   }
 
+  setBreadcrumb(): void {
+    this.breadCrumbs = [
+      {
+        label: 'Cards',
+        url: '/cards',
+      },
+      {
+        label: this.card.name,
+        url: `/card/${this.id}`,
+      },
+    ];
+  }
+
   ngOnInit(): void {
+    console.log(this.cardsService.getById(this.id));
     this.cardsService.getById(this.id).then(r => {
       this.setLoaded();
-      console.log('rrr', r);
       this.card = r;
+      this.setBreadcrumb();
     });
   }
 

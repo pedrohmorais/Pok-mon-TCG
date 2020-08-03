@@ -60,7 +60,7 @@ export class CardsService {
 
   getById(cardId: string): Promise<PokemonTCG.Card> {
     if (this.cards) {
-      return new Promise(() => this.cards.find(c => c.id === cardId));
+      return new Promise((resolve) => resolve(this.cards.find(c => c.id === cardId)));
     }
     return PokemonTCG.Card.find(cardId);
   }

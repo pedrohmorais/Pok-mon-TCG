@@ -8,6 +8,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [CardComponent],
@@ -19,6 +20,7 @@ import { MatListModule } from '@angular/material/list';
     MatChipsModule,
     MatExpansionModule,
     MatListModule,
+    RouterModule,
   ]
 })
 export class CardModule { }

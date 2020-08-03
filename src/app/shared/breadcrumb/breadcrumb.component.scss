@@ -1,0 +1,16 @@
+.breadcrumb {
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+
+  li {
+    display: flex;
+  }
+
+  .separator {
+    position: relative;
+    top: -2px;
+  }
+}

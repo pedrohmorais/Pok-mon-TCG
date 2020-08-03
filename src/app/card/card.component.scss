@@ -1,0 +1,7 @@
+@import '../shared/styles/grid.scss';
+
+@include container;
+
+.img {
+  max-width: 100%;
+}
