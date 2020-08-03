@@ -37,7 +37,7 @@ export class CardsService {
 
   getAll(options = defaultOptions): Promise<PokemonTCG.Card[]> {
     if (this.cards) {
-      return new Promise(() => this.cards);
+      return new Promise((resolve) => resolve(this.cards));
     }
     return PokemonTCG.Card.all().then(p => {
       let response = p;
