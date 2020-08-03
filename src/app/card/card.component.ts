@@ -56,7 +56,6 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.cardsService.getById(this.id));
     this.cardsService.getById(this.id).then(r => {
       this.setLoaded();
       this.card = r;

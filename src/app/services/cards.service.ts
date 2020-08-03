@@ -9,6 +9,7 @@ const defaultOptions = {
   providedIn: 'root'
 })
 export class CardsService {
+  // todo error handling
 
   private cards: PokemonTCG.Card[];
 

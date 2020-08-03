@@ -12,10 +12,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
-  declarations: [CardsComponent],
+  declarations: [CardsComponent, CardComponent],
   imports: [
     CommonModule,
     SharedModule,

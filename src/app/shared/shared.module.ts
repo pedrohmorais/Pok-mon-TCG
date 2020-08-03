@@ -7,12 +7,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
+import { PageLoaderComponent } from './page-loader/page-loader.component';
 
 const moduleComponents = [
   HeaderComponent,
   BreadcrumbComponent,
+  PageLoaderComponent,
 ];
 
 @NgModule({
@@ -27,6 +30,7 @@ const moduleComponents = [
     MatButtonModule,
     MatIconModule,
     RouterModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     ...moduleComponents,

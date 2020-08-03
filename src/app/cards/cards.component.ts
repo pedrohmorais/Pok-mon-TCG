@@ -14,6 +14,7 @@ export class CardsComponent implements OnInit {
   page = 0;
   pageSize = 4;
   searchForm: FormGroup;
+  loading = true;
 
   constructor(
     private cardsService: CardsService,
@@ -22,15 +23,13 @@ export class CardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.cardsService.getAll().then(pkm => {
-      console.log('pkm');
-      console.log(pkm);
       this.cards = pkm;
+      this.loading = false;
     });
     this.searchForm = this.formBuilder.group({
       search: this.formBuilder.control(''),
     });
     this.searchForm.controls.search.valueChanges.subscribe(change => {
-      console.log(change);
       this.cards = this.cardsService.filterCardsByName(change);
       this.page = 0;
     });
@@ -46,6 +45,5 @@ export class CardsComponent implements OnInit {
   paginate(ev: PageEvent): void {
     this.page = ev.pageIndex;
     this.pageSize = ev.pageSize;
-    console.log('pag', ev);
   }
 }
