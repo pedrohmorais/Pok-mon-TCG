@@ -27,8 +27,14 @@ describe('workspace-project App', () => {
     expect(page.getFirstCardTitle()).toEqual('Pikachu');
   });
 
-  it('should click in "pikachu" detail', () => {
+  it('should click in "pikachu" detail and render new page with breadcrumb', () => {
     page.clickDetailsButton();
-    expect(true).toEqual(true);
+    expect(page.getBreadcrumbLastItem()).toEqual('Pikachu');
+  });
+
+  it('the h1 should have the "Pikachu" name', () => {
+    page.getNameAndId().then(nameAndId => {
+      expect(nameAndId.indexOf('Pikachu') !== -1).toBeTruthy();
+    });
   });
 });

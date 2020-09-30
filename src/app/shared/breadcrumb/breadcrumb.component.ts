@@ -18,5 +18,9 @@ export class BreadcrumbComponent {
     return i < this.breadCrumbs.length - 1;
   }
 
+  getItemClass(lastItem: boolean): string {
+    return lastItem ? 'item last-item' : 'item';
+  }
+
   constructor() { }
 }

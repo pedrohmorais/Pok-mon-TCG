@@ -27,8 +27,19 @@ export class AppPage {
     return this.getFirstCard().element(by.css('mat-card-title')).getText() as Promise<string>;
   }
 
+  getBreadcrumb(): ElementFinder {
+    return element(by.id('breadcrumb'));
+  }
+
+  getBreadcrumbLastItem(): Promise<string> {
+    return this.getBreadcrumb().element(by.css('.last-item')).getText() as Promise<string>;
+  }
+
+  getNameAndId(): Promise<string> {
+    return element(by.css('.name-and-id')).getText() as Promise<string>;
+  }
+
   clickDetailsButton(): void {
     this.getFirstCard().element(by.css('.details-button')).click();
-    browser.sleep(10000);
   }
 }

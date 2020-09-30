@@ -1,11 +1,11 @@
-<ul class="breadcrumb">
+<ul id="breadcrumb" class="breadcrumb">
   <li *ngFor="let breadcrumb of breadCrumbs; let i = index"
       class="breadcrumb-item">
-    <a *ngIf="isLastItem(i)" [routerLink]="breadcrumb.url"  routerLinkActive="active">
+    <a *ngIf="isLastItem(i)" [routerLink]="breadcrumb.url" routerLinkActive="active">
       {{ breadcrumb.label }}
     </a>
     <mat-icon *ngIf="isLastItem(i)" class="separator">keyboard_arrow_right</mat-icon>
-    <span *ngIf="!isLastItem(i)">
+    <span *ngIf="!isLastItem(i)" class="last-item">
       {{ breadcrumb.label }}
     </span>
   </li>
