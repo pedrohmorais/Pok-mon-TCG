@@ -1,5 +1,4 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,16 +7,28 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display the header title', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('pokemon-app app is running!');
+    expect(page.getTitleText()).toEqual('Pokemon TGC');
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+  it('should render 4 cards by default', () => {
+    expect(page.getCardsCount()).toBe(4);
+  });
+
+  it('the first card name should start with "A"', () => {
+    page.getFirstCardTitle().then(cardName => {
+      expect(cardName.charAt(0)).toEqual('A');
+    });
+  });
+
+  it('should search for "pikachu"', () => {
+    page.searchField.sendKeys('pikachu');
+    expect(page.getFirstCardTitle()).toEqual('Pikachu');
+  });
+
+  it('should click in "pikachu" detail', () => {
+    page.clickDetailsButton();
+    expect(true).toEqual(true);
   });
 });

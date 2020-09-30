@@ -18,7 +18,7 @@
     <form [formGroup]="searchForm">
       <mat-form-field class="example-full-width">
         <mat-label>Search by pokemon name</mat-label>
-        <input type="text" formControlName="search" matInput placeholder="Pikachu">
+        <input id="search-field" type="text" formControlName="search" matInput placeholder="Pikachu">
         <md-icon matSuffix class="material-icons">&#xE8B6;</md-icon>
       </mat-form-field>
     </form>
@@ -44,6 +44,7 @@
     fxLayoutGap.gt-xs="2%"
     fxLayoutGap.gt-md="0.5%"
     fxLayoutAlign="center"
+    class="cards-container"
   >
     <pkm-card
       class="card-card"
