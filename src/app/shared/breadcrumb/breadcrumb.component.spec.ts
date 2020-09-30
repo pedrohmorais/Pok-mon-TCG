@@ -2,6 +2,17 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BreadcrumbComponent } from './breadcrumb.component';
 
+const breadcrumbsMock = [
+  {
+    label: 'Cards',
+    url: '/cards',
+  },
+  {
+    label: 'Pikachu',
+    url: `/card/dp5-70`,
+  },
+];
+
 describe('BreadcrumbComponent', () => {
   let component: BreadcrumbComponent;
   let fixture: ComponentFixture<BreadcrumbComponent>;
@@ -16,6 +27,7 @@ describe('BreadcrumbComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BreadcrumbComponent);
     component = fixture.componentInstance;
+    component.breadCrumbs = breadcrumbsMock;
     fixture.detectChanges();
   });
 

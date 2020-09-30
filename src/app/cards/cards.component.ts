@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardsService } from 'src/app/services/cards.service';
 import { PageEvent } from '@angular/material/paginator';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Card } from 'pokemon-tcg-sdk-typescript/dist/sdk';
 
 @Component({
   selector: 'pkm-cards',
@@ -35,7 +36,7 @@ export class CardsComponent implements OnInit {
     });
   }
 
-  showPageCards(): void {
+  showPageCards(): Card[] {
     return this.cards.slice(
       this.page * this.pageSize,
       (this.page + 1) * this.pageSize

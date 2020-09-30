@@ -3,6 +3,10 @@
 
 module.exports = function (config) {
   config.set({
+    files: [
+      'src/**/*.ts',
+      'src/**/!(*.{mock}).ts'
+    ],
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [

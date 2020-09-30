@@ -11,9 +11,13 @@ const defaultOptions = {
 export class CardsService {
   // todo error handling
 
-  private cards: PokemonTCG.Card[];
+  public cards: PokemonTCG.Card[];
 
   constructor() { }
+
+  getAllCards(): Promise<PokemonTCG.Card[]> {
+    return PokemonTCG.Card.all();
+  }
 
   compare( a, b, fieldName ): any {
     if (
@@ -39,7 +43,7 @@ export class CardsService {
     if (this.cards) {
       return new Promise((resolve) => resolve(this.cards));
     }
-    return PokemonTCG.Card.all().then(p => {
+    return this.getAllCards().then(p => {
       let response = p;
       if (options && options.sortBy) {
         response = p.sort(

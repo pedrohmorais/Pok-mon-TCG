@@ -12,6 +12,8 @@ import { RouterModule, ActivatedRoute } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { cards as cardsMock } from '../mocks/cards.mock';
 import { Observable, from } from 'rxjs';
+import { CardsService } from '../services/cards.service';
+import { cardServiceMock } from '../services/cards.service.mock';
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -40,6 +42,10 @@ describe('CardComponent', () => {
             },
           },
         },
+        {
+          provide: CardsService,
+          useValue: cardServiceMock,
+        }
       ]
     })
     .compileComponents();
@@ -48,11 +54,23 @@ describe('CardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
     component.card = cardsMock[0];
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should has attacks', () => {
+    expect(component.hasAttacks()).toBeTruthy();
+  });
+
+  it('should has attacks', () => {
+    expect(component.hasResistances()).toBeFalse();
+  });
+
+  it('should has attacks', () => {
+    expect(component.hasWeaknesses()).toBeTruthy();
   });
 });

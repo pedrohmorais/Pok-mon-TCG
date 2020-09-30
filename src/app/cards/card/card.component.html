@@ -6,7 +6,7 @@
   <img mat-card-image class="img" [src]="card.imageUrl">
   <mat-card-content>
     <h2>Types</h2>
-    <mat-chip-list aria-label="Types" *ngIf="card.types">
+    <mat-chip-list class="types" aria-label="Types" *ngIf="card.types">
       <mat-chip *ngFor="let type of card.types" color="primary">{{type}}</mat-chip>
     </mat-chip-list>
   </mat-card-content>
